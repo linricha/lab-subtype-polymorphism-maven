@@ -2,13 +2,14 @@ package edu.grinnell.csc207.experiments;
 
 import edu.grinnell.csc207.blocks.AsciiBlock;
 import edu.grinnell.csc207.blocks.Boxed;
+import edu.grinnell.csc207.blocks.Empty;
 // import edu.grinnell.csc207.blocks.HorizontalCompositionCenter;
 // import edu.grinnell.csc207.blocks.HorizontalCompositionTop;
 import edu.grinnell.csc207.blocks.Line;
 import edu.grinnell.csc207.blocks.Rectangle;
 // import edu.grinnell.csc207.blocks.Surrounded;
 // import edu.grinnell.csc207.blocks.VerticalCompositionLeft;
-
+import edu.grinnell.csc207.blocks.Surrounded;
 import java.io.PrintWriter;
 
 /**
@@ -54,6 +55,40 @@ public class Blocks {
     pen.printf("b4 = new Boxed(b2)\n\n");
     AsciiBlock b4 = new Boxed(b2);
     AsciiBlock.print(pen, b4);
+
+    separator(pen);
+    pen.printf("b5 = new Boxed(b3)\n\n");
+    AsciiBlock b5 = new Boxed(b3);
+    AsciiBlock.print(pen, b5);
+
+    separator(pen);
+    pen.printf("b6 = new Boxed(b5)\n\n");
+    AsciiBlock b6 = new Boxed(b5);
+    AsciiBlock.print(pen, b6);
+
+        separator(pen);
+    pen.printf("b7 = new Empty()\n\n");
+    AsciiBlock b7 = new Empty();
+    AsciiBlock.print(pen, b7);
+
+    separator(pen);
+    pen.printf("b8 = new Boxed(b8)\n\n");
+    AsciiBlock b8 = new Boxed(b7);
+    AsciiBlock.print(pen, b8);
+
+    separator(pen);
+    pen.printf("b9 = new Boxed(b8)\n\n");
+    AsciiBlock b9 = new Boxed(b8);
+    AsciiBlock.print(pen, b9);
+
+    separator(pen);
+
+    AsciiBlock.print(pen, new Surrounded(new Line("A"), '*'));
+    
+    separator(pen);
+    AsciiBlock.print(pen, new Surrounded(new Surrounded(new Line("A"), ' '), '*'));
+    separator(pen);
+    AsciiBlock.print(pen, new Surrounded(new Surrounded(new Line("A"), 'B'), 'C'));
 
     pen.close();
   } // main(String[])

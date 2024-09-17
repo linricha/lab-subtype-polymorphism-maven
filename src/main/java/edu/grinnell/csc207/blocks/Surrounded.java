@@ -1,5 +1,7 @@
 package edu.grinnell.csc207.blocks;
 
+import java.io.PrintWriter;
+
 /**
  * A text block surrounded by a single letter.
  *
@@ -54,7 +56,18 @@ public class Surrounded implements AsciiBlock {
    *   If the row is invalid.
    */
   public String row(int i) throws Exception {
-    throw new Exception("Not yet implemented"); // STUB
+
+    String row;
+    
+    if (i == 0){
+      row = this.boxChar.repeat(this.contents.width() + 2);
+    } else if (i < this.contents.height() - 1){
+       row = this.boxChar.concat(this.contents.row(this.contents.height() - i + 1). concat(this.boxChar)); 
+    } else {
+      row = this.boxChar.repeat(this.contents.width() + 2);
+    }
+
+    return row;
   } // row(int)
 
   /**
@@ -63,7 +76,7 @@ public class Surrounded implements AsciiBlock {
    * @return the number of rows
    */
   public int height() {
-    return 0;   // STUB
+    return this.contents.height() + 2;  
   } // height()
 
   /**
@@ -72,6 +85,6 @@ public class Surrounded implements AsciiBlock {
    * @return the numbrer of columns
    */
   public int width() {
-    return 0;   // STUB
+    return this.contents.width() + 2;
   } // width()
 } // class Surrounded
